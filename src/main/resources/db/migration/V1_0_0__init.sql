@@ -1,0 +1,44 @@
+CREATE TABLE IF NOT EXISTS customer (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS place (
+    id SERIAL PRIMARY KEY,
+    address VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS event (
+    id BIGSERIAL PRIMARY KEY,
+    event_date TIMESTAMP NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    place_id BIGSERIAL NOT NULL,
+    FOREIGN KEY(place_id) REFERENCES place (id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS ticket_status (
+    id BIGSERIAL PRIMARY KEY,
+    status VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ticket (
+    id BIGSERIAL PRIMARY KEY,
+    cost DOUBLE PRECISION NOT NULL,
+    number INTEGER NOT NULL,
+    customer_id BIGSERIAL,
+    event_id BIGSERIAL NOT NULL,
+    ticket_status_id BIGSERIAL NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customer (id) ON DELETE CASCADE,
+    FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE,
+    FOREIGN KEY (ticket_status_id) REFERENCES ticket_status (id) ON DELETE CASCADE
+);
+
+
+
+
+
+
+
