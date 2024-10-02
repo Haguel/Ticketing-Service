@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS customer (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(50) NOT NULL
 );
@@ -28,7 +29,7 @@ CREATE TABLE IF NOT EXISTS ticket (
     id BIGSERIAL PRIMARY KEY,
     cost DOUBLE PRECISION NOT NULL,
     number INTEGER NOT NULL,
-    customer_id BIGSERIAL,
+    customer_id BIGINT NULL,
     event_id BIGSERIAL NOT NULL,
     ticket_status_id BIGSERIAL NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customer (id) ON DELETE CASCADE,

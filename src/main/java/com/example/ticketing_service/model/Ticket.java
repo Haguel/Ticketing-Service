@@ -23,7 +23,7 @@ public class Ticket {
     private int number;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", nullable = true)
     private Customer customer;
 
     @ManyToOne
@@ -31,6 +31,13 @@ public class Ticket {
     private Event event;
 
     @OneToOne
-    @JoinColumn(name = "ticket_status_id")
+    @JoinColumn(name = "ticket_status_id", nullable = false)
     private TicketStatus ticketStatus;
+
+    public Ticket(double cost, int number, Event event, TicketStatus ticketStatus) {
+        this.cost = cost;
+        this.number = number;
+        this.event = event;
+        this.ticketStatus = ticketStatus;
+    }
 }

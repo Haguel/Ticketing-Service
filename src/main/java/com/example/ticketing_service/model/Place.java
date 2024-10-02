@@ -27,4 +27,9 @@ public class Place {
 
     @OneToMany(mappedBy = "place")
     private Set<Event> events;
+
+    public Place(String address, String name) {
+        this.address = address;
+        this.name = name;
+    }
 }

@@ -30,4 +30,10 @@ public class Event {
 
     @OneToMany
     private Set<Ticket> tickets;
+
+    public Event(LocalDateTime eventDate, String name, Place place) {
+        this.eventDate = eventDate;
+        this.name = name;
+        this.place = place;
+    }
 }

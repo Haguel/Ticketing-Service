@@ -21,6 +21,9 @@ public class Customer {
     private String name;
 
     @Column(nullable = false)
+    private String surname;
+
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -28,4 +31,11 @@ public class Customer {
 
     @OneToMany
     private Set<Ticket> tickets;
+
+    public Customer(String name, String surname, String email, String phone) {
+        this.name = name;
+        this.surname = name;
+        this.email = email;
+        this.phone = phone;
+    }
 }
